@@ -1,6 +1,5 @@
 require('dotenv').config();
 const mongoose = require('mongoose');
-const oracledb = require('oracledb');
 const DB = process.env.REACT_APP_DB_MONGO;
 
 
