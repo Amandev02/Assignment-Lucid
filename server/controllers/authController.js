@@ -62,7 +62,7 @@ module.exports.signup_post = async (req,res) => {
     }
     catch(err) {
       const errors =  handleErrors(err);
-      res.status(400).json({errors})
+      res.status(400).json(req.body)
        console.log(err);
     }
    
@@ -113,7 +113,7 @@ module.exports.me_get = async (req,res) => {
    const token = req.cookies;
     
         if(token){
-          res.status(201).json({status: true,keysecret});
+          res.status(201).json({status: true,token});
         }
     else{
         res.status(401).json({ error: "unauthorized"});
