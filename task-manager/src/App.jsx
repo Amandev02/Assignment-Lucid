@@ -36,11 +36,10 @@ function App() {
         <Routes>
           <Route path="/" element={<Login />} />
           <Route path="/register" element={<Register />} />
-          { token ? <>
+          
           <Route path="/dns-list" element={<DNSRecordList />} />
           <Route path="/distribution" element={<ChartComponent />} /> 
-          </>:  <Route path="*" element={<Error />} />
-          }
+         
          
           <Route path="*" element={<Error />} />
         </Routes>
