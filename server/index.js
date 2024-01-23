@@ -24,7 +24,7 @@ app.use(cookieParser());
 
 //routes
 app.use("/auth", authRoutes);
-app.use("/api",authenticate,dnsRoutes);
+app.use("/api",dnsRoutes);
 //app.use("/oracle", dnsoracleRoutes);
 
 
