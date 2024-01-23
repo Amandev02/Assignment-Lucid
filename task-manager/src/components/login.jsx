@@ -7,7 +7,7 @@ import axios from "axios";
 
 const Login = ()=>{
     const [passShow,setpassShow] = useState(false);
-
+   
     const [inpval,setinpval] = useState({
         email: "",
         password: ""
@@ -50,7 +50,8 @@ const Login = ()=>{
             // console.log("User registration successfully done");
             try {
                
-                await axios.post("https://assignment-lucid2.vercel.app/auth/signin", inpval); // Adjust API endpoint
+                const res = await axios.post("https://assignment-lucid2.vercel.app/auth/signin", inpval); // Adjust API endpoint
+                localStorage.setItem("usersdatatoken",res.result.token);
                 toast.success("Welcome Back 😃!", {
                   position: "top-center"
               });

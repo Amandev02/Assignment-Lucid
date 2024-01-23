@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState,useContext } from "react";
 import "./App.css";
 import { Routes, Route, useNavigate } from "react-router-dom";
 import { BrowserRouter as Router } from "react-router-dom";
@@ -9,10 +9,12 @@ import ChartComponent from "./components/InteractiveChart";
 import Error from "./components/Error";
 import Login from "./components/login";
 import Register from "./components/register";
+import { LoginContext } from "./components/ContextProvider/Context";
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
-
+  const { logindata, setLoginData } = useContext(LoginContext);
+  let token = localStorage.getItem("usersdatatoken");
   const handleLogin = () => {
     // Implement your login logic
     setIsAuthenticated(true);
@@ -34,8 +36,12 @@ function App() {
         <Routes>
           <Route path="/" element={<Login />} />
           <Route path="/register" element={<Register />} />
+          { token ? <>
           <Route path="/dns-list" element={<DNSRecordList />} />
-          <Route path="/distribution" element={<ChartComponent />} />
+          <Route path="/distribution" element={<ChartComponent />} /> 
+          </>:  <Route path="*" element={<Error />} />
+          }
+         
           <Route path="*" element={<Error />} />
         </Routes>
       </Router>

@@ -1,9 +1,11 @@
 import "./header.css";
-import { useState } from "react";
+import { useState ,useContext} from "react";
 import { Link, NavLink } from "react-router-dom";
+import { LoginContext } from "../ContextProvider/Context";
 
 const CustomNavbar = ({ isAuthenticated, onLogin, onLogout }) => {
-
+  const { logindata, setLoginData } = useContext(LoginContext);
+  let token = localStorage.getItem("usersdatatoken");
   const [menuOpen, setMenuOpen] = useState(false);
   return (
     <>
@@ -11,6 +13,7 @@ const CustomNavbar = ({ isAuthenticated, onLogin, onLogout }) => {
 <nav>
 <h1 to="/" className="title">
         DNS RECORDS
+        
       </h1>
     
       <div className="menu" onClick={() => setMenuOpen(!menuOpen)}>
@@ -18,14 +21,17 @@ const CustomNavbar = ({ isAuthenticated, onLogin, onLogout }) => {
         <span></span>
         <span></span>
       </div>
+      {
+        token ?  (
       <ul className={menuOpen ? "open" : ""}>
        
             <li><a href="/dns-list">Records</a></li>
             <li><a href="/distribution">Visualize Data</a></li>
         
-       
-        
-      </ul>
+            </ul>
+        ): <span></span> 
+      }
+      
     </nav>
      
     </>
