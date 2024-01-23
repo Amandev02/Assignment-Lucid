@@ -15,21 +15,21 @@ const CustomNavbar = ({ isAuthenticated, onLogin, onLogout }) => {
         DNS RECORDS
         
       </h1>
-    
+      {
+        token ?  (<>
       <div className="menu" onClick={() => setMenuOpen(!menuOpen)}>
         <span></span>
         <span></span>
         <span></span>
       </div>
-      {
-        token ?  (
+     
       <ul className={menuOpen ? "open" : ""}>
        
             <li><a href="/dns-list">Records</a></li>
             <li><a href="/distribution">Visualize Data</a></li>
         
             </ul>
-        ): <span></span> 
+            </> ): <span></span> 
       }
       
     </nav>
