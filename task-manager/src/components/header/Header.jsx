@@ -20,7 +20,6 @@ const CustomNavbar = ({ isAuthenticated, onLogin, onLogout }) => {
       </div>
       <ul className={menuOpen ? "open" : ""}>
        
-            <li><a href="/">Login</a></li>
             <li><a href="/dns-list">Records</a></li>
             <li><a href="/distribution">Visualize Data</a></li>
         
