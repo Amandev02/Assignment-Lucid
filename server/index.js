@@ -32,7 +32,7 @@ app.use(cookieParser());
 //routes
 app.use("/auth", authRoutes);
 app.use("/api",dnsRoutes);
-app.use("/oracle", dnsoracleRoutes);
+//app.use("/oracle", dnsoracleRoutes);
 
 
   

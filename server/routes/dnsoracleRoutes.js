@@ -7,13 +7,13 @@ const fileupload = require("express-fileupload");
 app.use(fileupload());
 
 // Configure OracleDB Connection
-const dbConfig = {
-  user: 'your_username',
-  password: 'your_password',
-  connectString: 'your_connection_string',
-};
+// const dbConfig = {
+//   user: 'your_username',
+//   password: 'your_password',
+//   connectString: 'your_connection_string',
+// };
 
-oracledb.createPool(dbConfig);
+// oracledb.createPool(dbConfig);
 
 // Existing route to get all DNS records
 router.get('/all-records', async (req, res) => {
