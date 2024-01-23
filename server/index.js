@@ -6,13 +6,12 @@ const authRoutes = require('./routes/authRoutes');
 const cookieParser = require('cookie-parser');
 const authenticate = require('./middleware/authenticate');
 const mongoose = require('mongoose');
-const port = 8000;
 const dnsRoutes = require('./routes/dnsRoutes');
 // const dnsoracleRoutes = require('./routes/dnsoracleRoutes');
 var cors = require('cors');
  app.use(cors());
 // const router = express.Router();
-
+const port = process.env.PORT || 8000 
 
 
 
@@ -21,12 +20,6 @@ app.use(bodyParser.json());
 
 app.use(cookieParser());
 
-
-
-
-
-
-// Route to handle incoming data from the frontend
 
 
 //routes
