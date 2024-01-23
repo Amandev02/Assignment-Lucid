@@ -50,7 +50,7 @@ const Login = ()=>{
             // console.log("User registration successfully done");
             try {
                
-                await axios.post("https://exuberant-scrubs-fish.cyclic.app/auth/sigin", inpval); // Adjust API endpoint
+                await axios.post("https://exuberant-scrubs-fish.cyclic.app/auth/signin", inpval); // Adjust API endpoint
                 toast.success("Welcome Back 😃!", {
                   position: "top-center"
               });
