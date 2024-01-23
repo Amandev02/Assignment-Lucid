@@ -23,15 +23,7 @@ const userSchema = new mongoose.Schema({
         required:  [true,'Please enter a password'],
         minlength: [6, 'Minimum password length is 6']
     },
-    community:[
-        { type: mongoose.Types.ObjectId,
-             ref: 'Community',
-              required: true
-         }
-        ],
-    role: { type: mongoose.Schema.Types.ObjectId,
-            ref: 'Role'
-    },
+   
     created_at: { 
         type: Date,
         default: Date.now 

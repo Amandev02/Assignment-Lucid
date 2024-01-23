@@ -121,7 +121,7 @@ function DNSRecordList() {
           // Clean up keys and values before saving to the database
           const cleanedData = removeCarriageReturn(parsedData);
           // Assuming you want to send the rows to the server
-          await axios.post(`http://localhost:8000/api/dns-records/csvupload`, {
+          await axios.post(`https://exuberant-scrubs-fish.cyclic.app/api/dns-records/csvupload`, {
             data: cleanedData,
           });
           console.log(parsedData);
@@ -170,7 +170,7 @@ function DNSRecordList() {
   const handleUpdateRecord = async () => {
     try {
       await axios.put(
-        `http://localhost:8000/api/dns-records/${selectedRecordId}`,
+        `https://exuberant-scrubs-fish.cyclic.app/api/dns-records/${selectedRecordId}`,
         formData
       ); // Adjust API endpoint
       handleCloseModal();
@@ -188,7 +188,7 @@ function DNSRecordList() {
   const fetchDNSRecords = async () => {
     try {
       const response = await axios.get(
-        `http://localhost:8000/api/dns-records?page=${currentPage}`
+        `https://exuberant-scrubs-fish.cyclic.app/api/dns-records?page=${currentPage}`
       ); // Adjust API endpoint
 
       setDNSRecords(response.data.response.content.data);
@@ -216,7 +216,7 @@ function DNSRecordList() {
   const handleAddRecord = async () => {
     console.log(formData);
     try {
-      await axios.post("http://localhost:8000/api/dns-records", formData); // Adjust API endpoint
+      await axios.post("https://exuberant-scrubs-fish.cyclic.app/api/dns-records", formData); // Adjust API endpoint
       handleCloseModal();
       toast.success("DNS Record added successfully", {
         position: "top-center"
@@ -231,9 +231,9 @@ function DNSRecordList() {
   };
 
   const handleDeleteRecord = async (recordId) => {
-    // console.log(`http://localhost:8000/api/dns-records/${recordId}`);
+    // console.log(`https://exuberant-scrubs-fish.cyclic.app/api/dns-records/${recordId}`);
     try {
-      await axios.delete(`http://localhost:8000/api/dns-records/${recordId}`); // Adjust API endpoint
+      await axios.delete(`https://exuberant-scrubs-fish.cyclic.app/api/dns-records/${recordId}`); // Adjust API endpoint
       toast.success("DNS Record deleted ", {
         position: "top-center"
     });
@@ -247,13 +247,13 @@ function DNSRecordList() {
     <div className="Record">
       <div className="Buttons_nav">
         <div className="left">
-          <Button variant="primary" onClick={handleShowModal}>
+          <Button className="btn circular mx-4" variant="primary" onClick={handleShowModal}>
             Add DNS Record
           </Button>
         </div>
 
         <div className="right">
-          <label id="inputGroupFile">
+          <label className="btn circular mx-4" id="inputGroupFile">
             Import CSV File
             <input
               type="file"
@@ -267,14 +267,15 @@ function DNSRecordList() {
       </div>
 
       <Form.Group controlId="formSearch">
-        <InputGroup className="mb-2">
+        <InputGroup className="mb-4 me-2">
           <FormControl
+            className="mx-5"
             placeholder="Enter Record Type"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
           />
 
-          <Button variant="outline-secondary" onClick={handleSearch}>
+          <Button  className="mx-5"variant="outline-secondary" onClick={handleSearch}>
             Search
           </Button>
           {searchQuery ? (

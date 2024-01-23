@@ -7,8 +7,6 @@ const keysecret = process.env.SECRET_KEY;
 const handleErrors = (err) => {
   let error = {name: '', email: '', password: ''};
 
-
-
   //validation errors
   if(err.message.includes('user validation failed')){
    Object.values(err.errors).forEach(({properties}) => {
@@ -31,7 +29,7 @@ const createToken = (id) => {
 module.exports.signup_post = async (req,res) => {
     const {name, email, password} = req.body;
 
-
+    console.log(req.body);
     try{
         // Check if the email is already registered
         const preuser = await User.findOne({email:email})

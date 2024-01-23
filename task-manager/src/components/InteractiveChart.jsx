@@ -19,7 +19,7 @@ const ChartComponent = () => {
 const fetchDNSRecords = async () => {
     try {
       // Replace 'your-backend-api-endpoint' with the actual API endpoint to fetch DNS records
-      const response = await fetch(`http://localhost:8000/api/all-records`);
+      const response = await fetch(`https://exuberant-scrubs-fish.cyclic.app/api/all-records`);
       const data = await response.json();
       // console.log(data.roleData);
       setDNSRecords(data.roleData);
@@ -86,7 +86,7 @@ const fetchDNSRecords = async () => {
   return (
     <>
     <div className='top'>
-    <Button className='btn' variant="secondary" onClick={handleExport}>Export</Button>
+    <Button className='btn mx-5 my-3 mb-5 circular' variant="secondary" onClick={handleExport}>Export</Button>
     </div>
     <div className='interactivechart'>
     

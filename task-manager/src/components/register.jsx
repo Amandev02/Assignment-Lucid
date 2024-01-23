@@ -2,6 +2,7 @@ import React,{useState} from 'react'
 import "./mix.css"
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import axios from "axios";
 import {NavLink,useNavigate} from 'react-router-dom'
 
 const Register = (()=>{
@@ -9,10 +10,9 @@ const Register = (()=>{
     const [cpassShow,setcpassShow] = useState(false);
 
     const [inpval,setinpval] = useState({
-        fname: "",
+        name: "",
         email: "",
-        password: "",
-        cpassword: ""
+        password: ""
     });
     // console.log(inpval);
     const history = useNavigate();
@@ -29,8 +29,8 @@ const Register = (()=>{
 
     const checkvaidation = async(e)=>{
         e.preventDefault()
-        const {fname,email,password,cpassword} = inpval;
-        if(fname==""){
+        const {name,email,password} = inpval;
+        if(name==""){
             toast.warning("Please enter your name", {
                 position: "top-center"
             });
@@ -55,37 +55,24 @@ const Register = (()=>{
                 position: "top-center"
             });
         }
-        else if(cpassword==""){
-            toast.error("Please confirm password", {
-                position: "top-center"
-            });
-        }
-        else if(password!==cpassword){
-            toast.error("Confirm Password and password not match", {
-                position: "top-center"
-            });
-        }
+   
         else{
             // console.log("User registration successfully done");
-
-            const data = await fetch("https://technical-space-w69w.vercel.app/register",{
-                method: "POST",
-                headers:{
-                    "Content-Type":"application/json"
-                },
-                body:JSON.stringify({
-                    fname,email,password,cpassword
-                })
-            });
-            const res = await data.json();
-            console.log(res.status);
-
-            if(res.status===201){
+            try {
+                console.log(inpval);
+                await axios.post("https://exuberant-scrubs-fish.cyclic.app/auth/signup", inpval); // Adjust API endpoint
                 toast.success("Registration Successfully done 😃!", {
-                    position: "top-center"
-                });
-                setinpval({...inpval,fname:"",email:"",password:"",cpassword:""});
-            }
+                  position: "top-center"
+              });
+              setinpval({...inpval,name:"",email:"",password:""});
+              } catch (error) {
+                toast.error("Error adding DNS Record", {
+                  position: "top-center"
+              });
+                console.error("Error adding DNS record:", error);
+              }
+
+            
         }
     } 
  
@@ -99,8 +86,8 @@ const Register = (()=>{
                     </div>
                     <form>
                         <div className='form_input'>
-                            <label htmlFor="fname">Name</label>
-                            <input type="text" onChange={setVal} value={inpval.fname} id="fname" name="fname" placeholder="Enter your name here" />
+                            <label htmlFor="name">Name</label>
+                            <input type="text" onChange={setVal} value={inpval.name} id="name" name="name" placeholder="Enter your name here" />
                         </div>
                         <div className='form_input'>
                             <label htmlFor='email'>Email</label>
@@ -115,7 +102,7 @@ const Register = (()=>{
                                 </div>
                             </div>
                         </div>
-                        <div className='form_input'>
+                        {/* <div className='form_input'>
                             <label htmlFor="password">Confirm Password</label>
                             <div className='two'>
                                 <input type={!cpassShow ? "password":"text"} onChange={setVal} value={inpval.cpassword} name="cpassword" id="cpassword" placeholder='Confirm password'/>
@@ -123,7 +110,7 @@ const Register = (()=>{
                                     {!cpassShow ? "Show":"Hide"}
                                 </div>
                             </div>
-                        </div>
+                        </div> */}
                         <button className='btn' onClick={checkvaidation}>Sign Up</button>
                         <p>Already have an account? <NavLink to="/">LogIn</NavLink></p>
                     </form>
