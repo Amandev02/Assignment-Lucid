@@ -8,7 +8,7 @@ const authenticate = require('./middleware/authenticate');
 const mongoose = require('mongoose');
 const port = 8000;
 const dnsRoutes = require('./routes/dnsRoutes');
-const dnsoracleRoutes = require('./routes/dnsoracleRoutes');
+// const dnsoracleRoutes = require('./routes/dnsoracleRoutes');
 var cors = require('cors');
  app.use(cors());
 // const router = express.Router();
