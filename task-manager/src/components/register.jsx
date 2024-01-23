@@ -66,10 +66,10 @@ const Register = (()=>{
               });
               setinpval({...inpval,name:"",email:"",password:""});
               } catch (error) {
-                toast.error("Error adding DNS Record", {
+                toast.error("Error please fill details correctly", {
                   position: "top-center"
               });
-                console.error("Error adding DNS record:", error);
+                console.error("Error in registration:", error);
               }
 
             

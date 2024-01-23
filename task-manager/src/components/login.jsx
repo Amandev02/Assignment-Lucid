@@ -1,7 +1,8 @@
-import React, {useState} from 'react'
+import {useState} from 'react'
 import "./mix.css"
 import {NavLink,useNavigate} from "react-router-dom"
 import { ToastContainer, toast } from 'react-toastify';
+import axios from "axios";
 
 
 const Login = ()=>{
@@ -47,25 +48,23 @@ const Login = ()=>{
         }
         else{  
             // console.log("User registration successfully done");
-            const data = await fetch("https://exuberant-scrubs-fish.cyclic.app/login",{
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify({
-                    email,password
-                })
-            });
-            const res = await data.json();
-
-            console.log(res);
-
-            if(res.status===201){
-                localStorage.setItem("usersdatatoken",res.result.token);
+            try {
                
-                history("/dns-list"); 
+                await axios.post("https://exuberant-scrubs-fish.cyclic.app/auth/sigin", inpval); // Adjust API endpoint
+                toast.success("Welcome Back 😃!", {
+                  position: "top-center"
+              });
+              history("/dns-list"); 
                 setinpval({...inpval,email:"",password:""});
-            }
+             
+              } catch (error) {
+                toast.error("Please fill correct details", {
+                  position: "top-center"
+              });
+                console.error("Error in login :", error);
+              }
+           
+        
         }
     }
 
