@@ -113,7 +113,7 @@ module.exports.me_get = async (req,res) => {
    const token = req.cookies;
     
         if(token){
-          res.status(201).json({status: true,token});
+          res.status(201).json({status: true,keysecret});
         }
     else{
         res.status(401).json({ error: "unauthorized"});
