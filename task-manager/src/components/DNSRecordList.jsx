@@ -121,7 +121,7 @@ function DNSRecordList() {
           // Clean up keys and values before saving to the database
           const cleanedData = removeCarriageReturn(parsedData);
           // Assuming you want to send the rows to the server
-          await axios.post(`https://exuberant-scrubs-fish.cyclic.app/api/dns-records/csvupload`, {
+          await axios.post(`https://assignment-lucid2.vercel.app/api/dns-records/csvupload`, {
             data: cleanedData,
           });
           console.log(parsedData);
@@ -170,7 +170,7 @@ function DNSRecordList() {
   const handleUpdateRecord = async () => {
     try {
       await axios.put(
-        `https://exuberant-scrubs-fish.cyclic.app/api/dns-records/${selectedRecordId}`,
+        `https://assignment-lucid2.vercel.app/api/dns-records/${selectedRecordId}`,
         formData
       ); // Adjust API endpoint
       handleCloseModal();
@@ -188,7 +188,7 @@ function DNSRecordList() {
   const fetchDNSRecords = async () => {
     try {
       const response = await axios.get(
-        `https://exuberant-scrubs-fish.cyclic.app/api/dns-records?page=${currentPage}`
+        `https://assignment-lucid2.vercel.app/api/dns-records?page=${currentPage}`
       ); // Adjust API endpoint
 
       setDNSRecords(response.data.response.content.data);
@@ -216,7 +216,7 @@ function DNSRecordList() {
   const handleAddRecord = async () => {
     console.log(formData);
     try {
-      await axios.post("https://exuberant-scrubs-fish.cyclic.app/api/dns-records", formData); // Adjust API endpoint
+      await axios.post("https://assignment-lucid2.vercel.app/api/dns-records", formData); // Adjust API endpoint
       handleCloseModal();
       toast.success("DNS Record added successfully", {
         position: "top-center"
@@ -231,9 +231,9 @@ function DNSRecordList() {
   };
 
   const handleDeleteRecord = async (recordId) => {
-    // console.log(`https://exuberant-scrubs-fish.cyclic.app/api/dns-records/${recordId}`);
+    // console.log(`https://assignment-lucid2.vercel.app/api/dns-records/${recordId}`);
     try {
-      await axios.delete(`https://exuberant-scrubs-fish.cyclic.app/api/dns-records/${recordId}`); // Adjust API endpoint
+      await axios.delete(`https://assignment-lucid2.vercel.app/api/dns-records/${recordId}`); // Adjust API endpoint
       toast.success("DNS Record deleted ", {
         position: "top-center"
     });
