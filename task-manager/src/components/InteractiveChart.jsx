@@ -22,10 +22,10 @@ const fetchDNSRecords = async () => {
         `https://assignment-lucid2.vercel.app/api/all-records`
       );
       // Replace 'your-backend-api-endpoint' with the actual API endpoint to fetch DNS records
-
-      const data = await response.json();
-      // console.log(data.roleData);
-      setDNSRecords(data.roleData);
+        console.log(response);
+     
+    
+      setDNSRecords(response.data.roleData);
      
     } catch (error) {
       console.error('Error fetching DNS records:', error);

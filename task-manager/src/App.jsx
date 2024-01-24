@@ -36,7 +36,6 @@ function App() {
         <Routes>
           <Route path="/" element={<Login />} />
           <Route path="/register" element={<Register />} />
-          
           <Route path="/dns-list" element={<DNSRecordList />} />
           <Route path="/distribution" element={<ChartComponent />} /> 
          
