@@ -27,17 +27,13 @@ function App() {
 
   return (
     <>
-      <CustomNavbar
-        isAuthenticated={isAuthenticated}
-        onLogin={handleLogin}
-        onLogout={handleLogout}
-      />
+      <CustomNavbar/>
       <Router>
         <Routes>
           <Route path="/" element={<Login />} />
           <Route path="/register" element={<Register />} />
-          <Route path="/dns-list" element={<DNSRecordList />} />
-          <Route path="/distribution" element={<ChartComponent />} /> 
+          <Route path="/dns-list" element={token?<DNSRecordList />:<Login />} />
+          <Route path="/distribution" element={token?<ChartComponent />:<Login />} /> 
          
          
           <Route path="*" element={<Error />} />

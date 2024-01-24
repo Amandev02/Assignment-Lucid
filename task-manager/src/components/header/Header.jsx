@@ -3,7 +3,7 @@ import { useState ,useContext} from "react";
 import { Link, NavLink } from "react-router-dom";
 import { LoginContext } from "../ContextProvider/Context";
 
-const CustomNavbar = ({ isAuthenticated, onLogin, onLogout }) => {
+const CustomNavbar = () => {
   const { logindata, setLoginData } = useContext(LoginContext);
   let token = localStorage.getItem("usersdatatoken");
   const [menuOpen, setMenuOpen] = useState(false);
