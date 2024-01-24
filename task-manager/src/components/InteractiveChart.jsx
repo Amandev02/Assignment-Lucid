@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-
+import axios from "axios";
 import { Chart as ChartJS, defaults } from "chart.js/auto";
 import { Bar, Doughnut, Line } from "react-chartjs-2";
 import './InteractiveChart.css'
@@ -18,8 +18,11 @@ const ChartComponent = () => {
 
 const fetchDNSRecords = async () => {
     try {
+      const response = await axios.get(
+        `https://assignment-lucid2.vercel.app/api/all-records`
+      );
       // Replace 'your-backend-api-endpoint' with the actual API endpoint to fetch DNS records
-      const response = await fetch(`https://assignment-lucid2.vercel.app/api/all-records`);
+
       const data = await response.json();
       // console.log(data.roleData);
       setDNSRecords(data.roleData);
